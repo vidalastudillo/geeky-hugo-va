@@ -72,12 +72,50 @@
               {{ end }}
             </ul>
 
+            <!-- Search -->
             {{ if site.Params.search }}
             <ul class="list-unstyled search d-none d-lg-block">
               <li class="list-inline-item">
                 <button class="toggle-search" data-target="#search-wrap"><i class="fas fa-search"></i></button>
               </li>
             </ul>
+            {{ end }}
+
+            <!-- Language List -->
+            {{ if .IsTranslated }}
+            <select class="m-2 me-0 border-0 bg-transparent select-language d-none d-lg-inline-block" id="select-language" onchange="location = this.value;">
+              {{ $siteLanguages := site.Languages}}
+              {{ $pageLang := .Page.Lang}}
+              {{ range .Page.AllTranslations }}
+              {{ $translation := .}}
+              {{ range $siteLanguages }}
+              {{ if eq $translation.Lang .Lang }}
+              {{ $selected := false }}
+              {{ if eq $pageLang .Lang}}
+              <option id="{{ $translation.Language }}" value="{{ $translation.RelPermalink }}" selected>{{ .LanguageName }}
+              </option>
+              {{ else }}
+              <option id="{{ $translation.Language }}" value="{{ $translation.RelPermalink }}">{{ .LanguageName }}</option>
+              {{ end }}
+              {{ end }}
+              {{ end }}
+              {{ end }}
+            </select>
+            {{ end }}
+
+            {{ if site.Params.theme_switcher }}
+            <!-- theme switcher -->
+            <div class="theme-switcher px-3 px-lg-4 d-none d-lg-inline-block">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15 15" width="18" height="18" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="#000">
+                <mask id="m">
+                  <circle class="masker" cx="7.5" cy="7.5" r="8.5" fill="#fff" />
+                </mask>
+                <g mask="url(#m)">
+                  <path class="sun" d="M7.5 1.5v-1m0 13.99v-.998m6-5.997h1m-13 0h-1m2-4.996l-1-1m12 0l-1 1m-10 9.993l-1 1m12 0l-1-1m-2-4.997a2.999 2.999 0 01-3 2.998 2.999 2.999 0 113-2.998z" />  
+                </g>
+                <path class="moon" fill="white" d="M1.66 11.362A6.5 6.5 0 007.693.502a7 7 0 11-6.031 10.86z" />  
+              </svg>
+            </div>
             {{ end }}
           </div>
         </nav>
@@ -93,7 +131,7 @@
           </form>
         </div>
         {{ end }}
-
+        
         <!-- mobile menu -->
         <div class="side-nav offcanvas offcanvas-end p-4" tabindex="-1" id="offcanvasRight"
           aria-labelledby="offcanvasRightLabel">
