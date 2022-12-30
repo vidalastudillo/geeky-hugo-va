@@ -34,7 +34,10 @@
         {{ end }}
         <!-- /image processing for multiple device -->
         {{ end }}
+
+        {{ if .Params.print_title }}
         <h2 class="mb-3">{{ .Title | markdownify }}</h2>
+        {{ end }}
         <div class="content">
           {{.Content}}
         </div>
