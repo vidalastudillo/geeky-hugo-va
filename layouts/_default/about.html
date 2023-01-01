@@ -119,7 +119,7 @@
                 <h4 class="h5 mb-2 text-center">{{ .name | markdownify }}</h4>
                 <!-- Button -->
                 <div class="text-center">
-                  <a href="{{ .link | absURL }}" class="btn btn-primary text-center">{{ .button | markdownify }}</a>
+                  <a href="{{ .link | absLangURL }}" class="btn btn-primary text-center">{{ .button | markdownify }}</a>
                 </div>
                 {{ end }}
               </div>
