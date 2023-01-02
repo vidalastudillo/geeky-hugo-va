@@ -3,11 +3,11 @@
 <section class="section">
   <div class="container">
     <div class="section-title">
-      <h2 class="h4">Showing Post From <span class="title-border"><script>
+      <h2 class="h4">{{ .Params.message | markdownify }} "<span class="title-border"><script>
         var keyword = (window.location.search).substr(3);
         var result = keyword.replace("+", " ");
         document.write(result);
-      </script></span></h2>
+      </script></span>"</h2>
     </div>
     <div class="row">
       <div class="col-lg-8 mb-5 mb-lg-0">
