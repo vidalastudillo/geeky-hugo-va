@@ -33,6 +33,10 @@ recent_post_button_text = "Recent"
 read_more_buttont_text = "Read more"
 previous_button_text = "Previous"
 next_button_text = "Next"
+related_posts_text = "Related Posts"
+showing_posts_text = "Showing Post From"
+no_categories_found_text = "No Categories Found"
+no_tags_found_text = "No Tags Found"
 
 mainSections = ["blog"]
 # about widget content
